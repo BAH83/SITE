@@ -120,6 +120,33 @@ function addReview() {
     loadReviews();
 }
 
+function envoyerWhatsApp() {
+    const numero = "221123456789"; // ton numéro
+    const message = encodeURIComponent("Bonjour, j'ai envoyé mon paiement pour l'ebook et je souhaite le recevoir.");
+    window.open(`https://wa.me/${numero}?text=${message}`, "_blank");
+}
+
+function acheter() {
+    // Rediriger vers Wave
+    window.open("https://wave.com/payment-link", "_blank");
+    // Rediriger vers Orange Money (optionnel)
+    // window.open("https://orangemoney.com/payment-link", "_blank");
+}
+
+function displaySimilar(ebook) {
+    const container = document.getElementById("similarEbooks");
+    const similar = ebooks.filter(e => e.genre === ebook.genre && e.id !== ebook.id);
+    similar.forEach(s => {
+        container.innerHTML += `
+            <div class="ebook-card">
+                <img src="${s.couverture}" alt="${s.nom}">
+                <h4>${s.nom}</h4>
+                <p>${s.auteur}</p>
+            </div>
+        `;
+    });
+}
+
 function loadReviews() {
     const id = localStorage.getItem("currentEbookId");
     const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
