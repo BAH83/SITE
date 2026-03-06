@@ -52,7 +52,7 @@ function displayEbooks(list) {
 // Aller à la page ebook
 function goToEbook(id) {
     localStorage.setItem("currentEbookId", id);
-    window.location.href = "ebook.html";
+    window.location.href = "index.html";
 }
 
 // Filtrer par genre
